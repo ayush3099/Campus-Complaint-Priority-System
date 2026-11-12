@@ -96,19 +96,4 @@ Campus-Complaint-Priority-System/
 
 ---
 
-## 🎓 Questions & Answers for Teacher / Viva ("Ma'am")
 
-**Q1: Which backend framework did you use in Java?**
-> *Answer:* We deliberately used **Java's built-in `com.sun.net.httpserver.HttpServer`** rather than heavy external frameworks like Spring Boot. This makes the project lightweight, portable, fast to compile, and has zero external dependencies while still exposing standard RESTful JSON APIs.
-
-**Q2: What Data Structures are utilized?**
-> *Answer:* 
-> 1. **Priority Queue / Max-Heap logic** implemented via Java `List` with custom `Comparator` sorting primarily by `priorityScore` descending and secondarily by `createdAt` ascending.
-> 2. **HashMaps / Sets** for fast status verification and JSON key-value extraction.
-> 3. **Thread-Safe collections** to manage concurrent student submissions.
-
-**Q3: How does your system prevent starvation of low-priority complaints?**
-> *Answer:* Traditional priority systems can cause low-priority issues to wait forever (starvation). Our `PriorityEngine` incorporates an **Aging Factor ($+2\text{ pts}$ per waiting day)**. As days pass, older low-priority complaints gradually elevate in score and move up the queue.
-
-**Q4: How are duplicate complaints handled?**
-> *Answer:* Instead of filing duplicate complaints for the same issue (like a broken water cooler), students can click **"Me Too!" (Endorse)**. This increases the complaint's upvote count, which grants $+3$ priority points without cluttering the administrative database.
